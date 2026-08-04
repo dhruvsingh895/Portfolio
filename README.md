@@ -1,5 +1,7 @@
 # Dhruv Singh — Personal Portfolio
 
+**Live:** [portfolio-iota-brown-94.vercel.app](https://portfolio-iota-brown-94.vercel.app) — deployed on Vercel.
+
 An immersive, cinematic single-page experience built with **Next.js 15 (App Router)**, **TypeScript**, **Tailwind CSS v4**, blending **Three.js / React Three Fiber**, **GSAP + ScrollTrigger**, **Framer Motion** and **Lenis smooth scroll**.
 
 Not a portfolio — a film. The visitor flies through a neural tunnel, watches the camera zoom from space to Kanpur, India, and then scrolls through a living product narrative: storytelling chapters, a Netflix-style project modal with animated architecture flows, 3D glass skill cubes, live GitHub data, an AI concierge, and an EmailJS-powered contact terminal.
