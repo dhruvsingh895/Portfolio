@@ -96,4 +96,4 @@ Set the `NEXT_PUBLIC_*` environment variables in the Vercel project settings. Ad
 
 - Replace the placeholder GitHub/LeetCode/LinkedIn URLs, email and resume link in `src/lib/data/profile.ts`.
 - The cert and project `*/case-study` links are placeholder URLs — point them at real resources.
-- OG image is generated at `public/og.png` (safe to swap for a designed social card).
+- OG image is generated at `public/og.png` (safe to swap for a designed social card).# Portfolio
