@@ -156,10 +156,10 @@ export function Hero() {
           </motion.p>
 
           <h1 className="mt-4 font-display text-[17vw] font-extrabold leading-[0.92] tracking-[-0.045em] md:text-[11vw] lg:text-[9.5rem]">
-            <AnimatedText text="DHRUV" className="block" delay={0.15} stagger={0.05} active={ready} />
+            <AnimatedText text="DHRUV" className="text-gradient-aurora block" delay={0.15} stagger={0.05} active={ready} />
             <AnimatedText
               text="SINGH"
-              className="block text-gradient-aurora glow-text"
+              className="text-hue block glow-text"
               delay={0.4}
               stagger={0.05}
               active={ready}

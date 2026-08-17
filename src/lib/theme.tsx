@@ -12,11 +12,11 @@ interface ThemeContextValue {
 const ThemeContext = createContext<ThemeContextValue>({ theme: "mono", toggle: () => {} });
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<ThemeMode>("mono");
+  const [theme, setTheme] = useState<ThemeMode>("colorful");
 
   useEffect(() => {
     const saved = localStorage.getItem("pf-theme");
-    if (saved === "colorful") setTheme("colorful");
+    if (saved === "mono" || saved === "colorful") setTheme(saved);
   }, []);
 
   useEffect(() => {

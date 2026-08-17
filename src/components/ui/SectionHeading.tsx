@@ -73,7 +73,7 @@ export function SectionHeading({
         {gradientWord ? (
           <>
             {title}{" "}
-            <span className="text-gradient-aurora glow-text inline-block">{gradientWord}</span>
+            <span className="text-hue glow-text inline-block">{gradientWord}</span>
           </>
         ) : (
           title

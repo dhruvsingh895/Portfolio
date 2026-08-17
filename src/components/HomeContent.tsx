@@ -7,7 +7,9 @@ import { Preloader } from "@/components/core/Preloader";
 import { Navbar } from "@/components/core/Navbar";
 import { Footer } from "@/components/core/Footer";
 import { CursorAura } from "@/components/ui/CursorAura";
+import { AuroraBackdrop } from "@/components/ui/AuroraBackdrop";
 import { TechTicker } from "@/components/ui/TechTicker";
+import { SectionDivider } from "@/components/ui/SectionDivider";
 import ExperienceSceneLoader from "@/components/three/ExperienceSceneLoader";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -38,6 +40,7 @@ export function HomeContent() {
     <>
       <CustomCursor />
       <CursorAura />
+      <AuroraBackdrop />
       <ScrollProgress />
       <ExperienceSceneLoader />
       <Preloader onComplete={() => setBooted(true)} />
@@ -48,13 +51,21 @@ export function HomeContent() {
         <Hero />
         <TechTicker />
         <About />
+        <SectionDivider />
         <Experience />
+        <SectionDivider />
         <Projects />
+        <SectionDivider />
         <Skills />
+        <SectionDivider />
         <Achievements />
+        <SectionDivider />
         <GitHubSection />
+        <SectionDivider />
         <Certificates />
+        <SectionDivider />
         <Timeline />
+        <SectionDivider />
         <Contact />
       </main>
 
