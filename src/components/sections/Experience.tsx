@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TiltCard } from "@/components/ui/TiltCard";
 import { EXPERIENCE } from "@/lib/data/experience";
@@ -10,6 +10,7 @@ import { FaBuilding, FaBriefcase } from "react-icons/fa6";
 
 export function Experience() {
   const accent = useThemedAccent();
+  const reduce = useReducedMotion();
   return (
     <section id="experience" className="relative overflow-hidden py-28 md:py-40">
       <div aria-hidden className="pointer-events-none absolute inset-0 grid-bg opacity-25" />
@@ -32,7 +33,7 @@ export function Experience() {
                   style={{ background: accent(exp.accent) }} />
                 <div className="relative flex flex-wrap items-start justify-between gap-4">
                   <div className="flex items-center gap-4">
-                    <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl glass">
+                    <div className="relative flex h-14 w-14 items-center justify-center rounded-2xl glass-flat">
                       <span className="absolute inset-0 rounded-2xl animate-pulse-glow opacity-70" style={{ background: `${accent(exp.accent)}33` }} />
                       <FaBuilding className="text-xl" style={{ color: accent(exp.accent) }} />
                     </div>
@@ -90,10 +91,10 @@ export function Experience() {
                 "Production AI",
               ].map((step, i) => (
                 <div key={step} className="flex items-center gap-3">
-                  <span className="rounded-full glass px-4 py-2 text-slate-300 transition-colors hover:text-aurora-cyan">
+                  <span className="rounded-full glass-flat px-4 py-2 text-slate-300 transition-colors hover:text-aurora-cyan">
                     {step}
                   </span>
-                  {i < 5 && <motion.span animate={{ x: [0, 3, 0] }} transition={{ duration: 1.4, repeat: Infinity, delay: i * 0.2 }} className="text-aurora-cyan/60">
+                  {i < 5 && <motion.span animate={reduce ? { opacity: 0.6 } : { x: [0, 3, 0] }} transition={reduce ? { duration: 0 } : { duration: 1.4, repeat: Infinity, delay: i * 0.2 }} className="text-aurora-cyan/60">
                     ▸
                   </motion.span>}
                 </div>

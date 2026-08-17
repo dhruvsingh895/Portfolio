@@ -52,11 +52,17 @@ export function Preloader({ onComplete }: PreloaderProps) {
     steps.forEach((stepEl) => {
       const text = stepEl.querySelector("[data-text]");
       const check = stepEl.querySelector("[data-check]");
-      const hold = reduced ? 0.1 : 0.95;
-      tl.fromTo(stepEl, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.35, ease: "power3.out" })
-        .to(text, { opacity: 0.35, duration: 0.3, ease: "power2.inOut" }, `+=${hold}`)
-        .to(check, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, "<");
+      const hold = reduced ? 0.05 : 0.18;
+      tl.fromTo(stepEl, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.25, ease: "power3.out" })
+        .to(text, { opacity: 0.35, duration: 0.2, ease: "power2.inOut" }, `+=${hold}`)
+        .to(check, { opacity: 1, scale: 1, duration: 0.18, ease: "back.out(2)" }, "<");
     });
+
+    // hard cap: never let the boot screen own the page
+    const hardExit = setTimeout(() => {
+      tl.progress(1);
+      exit();
+    }, reduced ? 1200 : 2800);
 
     function exit() {
       setRainActive(false);
@@ -65,18 +71,19 @@ export function Preloader({ onComplete }: PreloaderProps) {
       if (!root) return onComplete();
       gsap.to(root, {
         yPercent: -100,
-        duration: 1,
+        duration: reduced ? 0.4 : 0.7,
         ease: "power4.inOut",
-        delay: 0.25,
+        delay: reduced ? 0 : 0.2,
         onComplete: () => {
           root.style.display = "none";
           onComplete();
         },
       });
-      if (bar) gsap.to(bar, { opacity: 0, duration: 0.4 });
+      if (bar) gsap.to(bar, { opacity: 0, duration: 0.3 });
     }
 
     return () => {
+      clearTimeout(hardExit);
       tl.kill();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps

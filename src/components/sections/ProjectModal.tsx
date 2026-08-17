@@ -235,11 +235,11 @@ export function ProjectModal({ project, onClose }: Props) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.4 }}
+      transition={{ type: "spring", bounce: 0, duration: 0.4 }}
       className="fixed inset-0 z-[75] flex items-center justify-center p-0 md:p-6"
     >
       {/* cinematic backdrop */}
-      <div className="absolute inset-0 bg-void/70 backdrop-blur-xl" onClick={onClose} />
+      <div className="scrim absolute inset-0" onClick={onClose} />
       <div aria-hidden className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 animate-blob opacity-60" style={{ background: `radial-gradient(circle at 30% 20%, ${accent(project.accent)}30, transparent 50%), radial-gradient(circle at 80% 70%, ${accent(project.accent2)}25, transparent 50%)` }} />
         <div className="absolute inset-0 grid-bg opacity-20" />
@@ -247,10 +247,10 @@ export function ProjectModal({ project, onClose }: Props) {
       </div>
 
       <motion.div
-        initial={{ y: 80, scale: 0.96, opacity: 0 }}
-        animate={{ y: 0, scale: 1, opacity: 1 }}
-        exit={{ y: 60, scale: 0.97, opacity: 0 }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ y: 80, scale: 0.96, opacity: 0, filter: "blur(16px)" }}
+        animate={{ y: 0, scale: 1, opacity: 1, filter: "blur(0px)" }}
+        exit={{ y: 60, scale: 0.97, opacity: 0, filter: "blur(12px)" }}
+        transition={{ type: "spring", bounce: 0, duration: 0.55 }}
         className="relative z-10 max-h-[92vh] w-full max-w-6xl overflow-y-auto overflow-x-hidden rounded-3xl border border-white/10 bg-surface/90 shadow-[0_60px_120px_-30px_rgba(0,0,0,0.9)]"
       >
         {/* top chrome */}
@@ -265,7 +265,7 @@ export function ProjectModal({ project, onClose }: Props) {
             </span>
           </div>
           <button onClick={onClose} aria-label="Close" data-cursor
-            className="flex h-10 w-10 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:rotate-90 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_20px_-8px_rgba(var(--glow-w),0.6)]">
+            className="flex h-10 w-10 items-center justify-center rounded-full glass-flat ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:rotate-90 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_20px_-8px_rgba(var(--glow-w),0.6)]">
             <FaXmark />
           </button>
         </div>
@@ -282,7 +282,7 @@ export function ProjectModal({ project, onClose }: Props) {
             <motion.h3
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               transition={{ delay: 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="mx-auto mt-4 max-w-3xl font-display text-3xl font-bold leading-tight text-gradient md:text-5xl"
+              className="mx-auto mt-4 max-w-3xl font-display text-3xl font-bold leading-tight tracking-[-0.03em] text-gradient md:text-5xl"
             >
               {project.title}
             </motion.h3>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type ReactNode, type MouseEvent } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface TiltCardProps {
@@ -20,12 +20,13 @@ export function TiltCard({
   scale = 1.02,
 }: TiltCardProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
   const rx = useMotionValue(0);
   const ry = useMotionValue(0);
   const gx = useMotionValue(50);
   const gy = useMotionValue(50);
-  const srx = useSpring(rx, { stiffness: 180, damping: 20 });
-  const sry = useSpring(ry, { stiffness: 180, damping: 20 });
+  const srx = useSpring(rx, { stiffness: 180, damping: 27 });
+  const sry = useSpring(ry, { stiffness: 180, damping: 27 });
 
   const glareBg = useTransform(
     [gx, gy],
@@ -34,6 +35,7 @@ export function TiltCard({
   );
 
   const handleMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (reduce) return;
     const rect = ref.current?.getBoundingClientRect();
     if (!rect) return;
     const px = (e.clientX - rect.left) / rect.width;
@@ -53,8 +55,9 @@ export function TiltCard({
     <motion.div
       ref={ref}
       onMouseMove={handleMove}
-      onMouseLeave={reset}
-      whileHover={{ scale }}
+      onMouseLeave={reduce ? undefined : reset}
+      whileHover={reduce ? undefined : { scale }}
+      transition={{ type: "spring", stiffness: 400, damping: 30 }}
       style={{ rotateX: srx, rotateY: sry, transformStyle: "preserve-3d", perspective: 900 }}
       className={cn("relative will-change-transform", className)}
     >

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SKILLS, type Skill } from "@/lib/data/skills";
 import { viewportOnce } from "@/lib/animations";
@@ -36,6 +36,15 @@ const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
 function Cube({ skill, index, onOpen }: { skill: Skill; index: number; onOpen: () => void }) {
   const accent = useThemedAccent();
   const [hovered, setHovered] = useState(false);
+  const rx = useMotionValue(-18);
+  const ry = useMotionValue(24);
+  const srx = useSpring(rx, { stiffness: 180, damping: 27 });
+  const sry = useSpring(ry, { stiffness: 180, damping: 27 });
+
+  useEffect(() => {
+    rx.set(hovered ? 32 : -18);
+    ry.set(hovered ? -38 : 24);
+  }, [hovered, rx, ry]);
 
   return (
     <motion.button
@@ -78,9 +87,7 @@ function Cube({ skill, index, onOpen }: { skill: Skill; index: number; onOpen: (
 
       <motion.div
         className="relative h-[86px] w-[86px] [transform-style:preserve-3d] md:h-[100px] md:w-[100px]"
-        animate={{ rotateX: hovered ? 32 : -18, rotateY: hovered ? -38 : 24 }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        style={undefined}
+        style={{ rotateX: srx, rotateY: sry, transformStyle: "preserve-3d" }}
       >
         {/* six glass faces */}
         {["front", "back", "right", "left", "top", "bottom"].map((f) => (
@@ -123,19 +130,19 @@ function SkillModal({ skill, onClose }: { skill: Skill; onClose: () => void }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.35 }}
+      transition={{ type: "spring", bounce: 0, duration: 0.35 }}
       className="fixed inset-0 z-[75] flex items-center justify-center p-4"
     >
-      <div className="absolute inset-0 bg-void/70 backdrop-blur-xl" onClick={onClose} />
+      <div className="scrim absolute inset-0" onClick={onClose} />
       <motion.div
-        initial={{ y: 60, scale: 0.94 }}
-        animate={{ y: 0, scale: 1 }}
-        exit={{ y: 40, scale: 0.95 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ y: 60, scale: 0.94, opacity: 0, filter: "blur(12px)" }}
+        animate={{ y: 0, scale: 1, opacity: 1, filter: "blur(0px)" }}
+        exit={{ y: 40, scale: 0.95, opacity: 0, filter: "blur(10px)" }}
+        transition={{ type: "spring", bounce: 0, duration: 0.5 }}
         className="relative z-10 w-full max-w-md overflow-hidden rounded-3xl glass-strong p-8"
       >
         <button onClick={onClose} aria-label="Close" data-cursor
-          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:rotate-90 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_18px_-8px_rgba(var(--glow-w),0.6)]">
+          className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full glass-flat ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:rotate-90 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_18px_-8px_rgba(var(--glow-w),0.6)]">
           <FaXmark />
         </button>
 

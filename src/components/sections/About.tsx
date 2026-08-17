@@ -97,7 +97,7 @@ export function About() {
                     {/* Chapter marker */}
                     <div className="relative shrink-0 pt-3">
                       <span
-                        className="font-display text-5xl font-extrabold text-transparent md:text-7xl"
+                        className="font-display text-5xl font-extrabold text-transparent tracking-[-0.03em] md:text-7xl"
                         style={{ WebkitTextStroke: `1.5px ${accent(chapter.accent)}55` }}
                       >
                         {chapter.n}
@@ -151,7 +151,7 @@ export function About() {
                   <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-aurora-cyan/70">
                     Academic Core
                   </p>
-                  <h3 className="mt-4 font-display text-2xl font-bold text-foreground md:text-4xl">
+                  <h3 className="mt-4 font-display text-2xl font-bold tracking-[-0.02em] text-foreground md:text-4xl">
                     {EDUCATION.degree}
                   </h3>
                   <p className="mt-2 text-slate-400">{EDUCATION.university}</p>
@@ -173,7 +173,7 @@ export function About() {
                 </div>
 
                 <div className="flex flex-col items-start justify-center gap-4 lg:col-span-5 lg:items-end">
-                  <div className="relative rounded-3xl glass p-8 text-center">
+                  <div className="relative rounded-3xl glass-flat p-8 text-center">
                     <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-br from-aurora-cyan/10 to-aurora-violet/10" />
                     <div className="font-display text-6xl font-extrabold text-gradient-aurora">
                       {EDUCATION.cgpa}
@@ -186,7 +186,7 @@ export function About() {
                     </div>
                   </div>
                   {EDUCATION.secondary && (
-                    <div className="w-full rounded-3xl glass p-6 text-left">
+                    <div className="w-full rounded-3xl glass-flat p-6 text-left">
                       <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-aurora-violet/80">
                         {EDUCATION.secondary.period}
                       </div>

@@ -78,7 +78,7 @@ export function Navbar({ active }: { active: boolean }) {
             </span>
           </button>
 
-          <div className="hidden items-center gap-1 rounded-full glass px-2 py-1.5 lg:flex">
+          <div className="hidden items-center gap-1 rounded-full glass-flat px-2 py-1.5 lg:flex">
             {NAV_LINKS.map((link) => (
               <button
                 key={link.id}
@@ -142,7 +142,7 @@ export function Navbar({ active }: { active: boolean }) {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ type: "spring", bounce: 0, duration: 0.3 }}
-              className="fixed inset-0 z-[55] flex flex-col justify-center bg-void/80 backdrop-blur-2xl lg:hidden"
+              className="scrim fixed inset-0 z-[55] flex flex-col justify-center lg:hidden"
             >
               <div className="absolute inset-0 grid-bg opacity-30" />
               <div className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-aurora-violet/20 blur-[130px]" />

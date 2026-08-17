@@ -59,7 +59,7 @@ export function Footer() {
                   key={id}
                   onClick={() => scrollToId(id)}
                   data-cursor
-                  className="group flex w-max items-center gap-2 text-sm text-slate-400 transition-colors hover:text-aurora-cyan"
+                  className="group flex w-max items-center gap-2 text-sm text-slate-400 transition-colors hover:text-aurora-cyan active:scale-95"
                 >
                   <span className="h-px w-4 bg-slate-600 transition-all duration-300 group-hover:w-6 group-hover:bg-aurora-cyan" />
                   {label}
@@ -81,7 +81,7 @@ export function Footer() {
                   rel="noreferrer"
                   aria-label={label}
                   data-cursor
-                  className="group relative flex h-11 w-11 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_24px_-6px_rgba(var(--glow-w),0.7)]"
+                  className="group relative flex h-11 w-11 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_24px_-6px_rgba(var(--glow-w),0.7)] active:scale-90"
                 >
                   <Icon className="text-lg" />
                 </a>

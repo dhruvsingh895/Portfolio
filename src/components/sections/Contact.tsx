@@ -120,13 +120,13 @@ export function Contact() {
 
               <div className="flex flex-wrap items-center justify-between gap-6 pt-2">
                 <div className="flex gap-3">
-                  <a href={PROFILE.socials.github} target="_blank" rel="noreferrer" aria-label="GitHub" data-cursor className="flex h-10 w-10 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-400 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_22px_-8px_rgba(var(--glow-w),0.65)]">
+<a href={PROFILE.socials.github} target="_blank" rel="noreferrer" aria-label="GitHub" data-cursor className="flex h-10 w-10 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-400 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_22px_-8px_rgba(var(--glow-w),0.65)] active:scale-90">
                     <FiGithub />
                   </a>
-                  <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" data-cursor className="flex h-10 w-10 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-400 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_22px_-8px_rgba(var(--glow-w),0.65)]">
+                  <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" data-cursor className="flex h-10 w-10 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-400 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_22px_-8px_rgba(var(--glow-w),0.65)] active:scale-90">
                     <FiLinkedin />
                   </a>
-                  <a href={`mailto:${PROFILE.email}`} aria-label="Email" data-cursor className="flex h-10 w-10 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-400 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_22px_-8px_rgba(var(--glow-w),0.65)]">
+                  <a href={`mailto:${PROFILE.email}`} aria-label="Email" data-cursor className="flex h-10 w-10 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-400 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_22px_-8px_rgba(var(--glow-w),0.65)] active:scale-90">
                     <FiMail />
                   </a>
                 </div>

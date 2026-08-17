@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { AI_KNOWLEDGE, AI_CHAT_STARTERS, AI_THINKING_LINES } from "@/lib/data/ai-knowledge";
 import { FaXmark, FaPaperPlane, FaRobot } from "react-icons/fa6";
 
@@ -37,6 +37,7 @@ export function AIChat() {
   const [thinkLine, setThinkLine] = useState(0);
   const [messages, setMessages] = useState<Message[]>([]);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
 
   useEffect(() => {
     if (messages.length === 0) {
@@ -105,10 +106,10 @@ export function AIChat() {
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: 40, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 30, scale: 0.95 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, y: 40, scale: 0.95, filter: "blur(12px)" }}
+            animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+            exit={{ opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" }}
+            transition={{ type: "spring", bounce: 0, duration: 0.5 }}
             className="fixed bottom-24 right-4 z-[66] flex h-[min(560px,70vh)] w-[min(92vw,380px)] flex-col overflow-hidden rounded-3xl glass-strong shadow-[0_40px_90px_-20px_rgba(0,0,0,0.9)] md:right-8"
           >
             {/* header */}
@@ -122,7 +123,7 @@ export function AIChat() {
               <div>
                 <p className="font-display text-sm font-bold text-foreground">Aurora</p>
                 <p className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-widest text-neon/90">
-                  <motion.span animate={{ opacity: [1, 0.4, 1] }} transition={{ duration: 1.6, repeat: Infinity }}>●</motion.span>
+                  <motion.span animate={reduce ? { opacity: 1 } : { opacity: [1, 0.4, 1] }} transition={reduce ? { duration: 0 } : { duration: 1.6, repeat: Infinity }}>●</motion.span>
                   online · local knowledge
                 </p>
               </div>
@@ -161,8 +162,8 @@ export function AIChat() {
                           <motion.span
                             key={i}
                             className="h-1.5 w-1.5 rounded-full bg-aurora-cyan"
-                            animate={{ opacity: [0.3, 1, 0.3], y: [0, -3, 0] }}
-                            transition={{ duration: 0.8, repeat: Infinity, delay: i * 0.15 }}
+                            animate={reduce ? { opacity: 0.7 } : { opacity: [0.3, 1, 0.3], y: [0, -3, 0] }}
+                            transition={reduce ? { duration: 0 } : { duration: 0.8, repeat: Infinity, delay: i * 0.15 }}
                           />
                         ))}
                       </span>
@@ -189,7 +190,7 @@ export function AIChat() {
                       key={s}
                       onClick={() => send(s)}
                       data-cursor
-                      className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-slate-400 transition-all duration-300 hover:border-aurora-cyan/60 hover:bg-aurora-cyan/5 hover:text-aurora-cyan hover:shadow-[0_0_16px_-8px_rgba(var(--glow-w),0.6)]"
+                      className="rounded-full border border-white/10 px-3 py-1.5 text-xs text-slate-400 transition-all duration-300 hover:border-aurora-cyan/60 hover:bg-aurora-cyan/5 hover:text-aurora-cyan hover:shadow-[0_0_16px_-8px_rgba(var(--glow-w),0.6)] active:scale-95"
                     >
                       {s}
                     </button>
@@ -215,7 +216,7 @@ export function AIChat() {
                 aria-label="Send"
                 disabled={!input.trim() || thinking}
                 data-cursor
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-aurora-cyan to-aurora-violet text-void ring-1 ring-white/20 shadow-[0_0_20px_-6px_rgba(var(--glow-w),0.6)] transition-all hover:scale-105 hover:shadow-[0_0_30px_-6px_rgba(var(--glow-g),0.8)] disabled:opacity-40"
+                className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-aurora-cyan to-aurora-violet text-void ring-1 ring-white/20 shadow-[0_0_20px_-6px_rgba(var(--glow-w),0.6)] transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_-6px_rgba(var(--glow-g),0.8)] active:scale-95 disabled:opacity-40"
               >
                 <FaPaperPlane />
               </button>

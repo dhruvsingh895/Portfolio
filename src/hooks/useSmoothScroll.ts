@@ -13,15 +13,23 @@ export function getLenis(): Lenis | null {
   return lenisInstance;
 }
 
+function prefersReducedMotion(): boolean {
+  return (
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+}
+
 export function useSmoothScroll(enabled: boolean) {
   const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
-    if (!enabled || lenisInstance) return;
+    if (!enabled || lenisInstance || prefersReducedMotion()) return;
 
+    // Velocity-driven lerp (not a fixed-duration tween): wheel feel tracks
+    // the pointer, and momentum projects naturally on release.
     const lenis = new Lenis({
-      duration: 0.9,
-      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      lerp: 0.08,
       smoothWheel: true,
       touchMultiplier: 1.3,
       wheelMultiplier: 1,
@@ -47,9 +55,14 @@ export function useSmoothScroll(enabled: boolean) {
 }
 
 export function scrollToId(id: string) {
-  if (lenisInstance) {
-    lenisInstance.scrollTo(`#${id}`, { offset: -72, duration: 1.6 });
+  const reduced = prefersReducedMotion();
+  if (lenisInstance && !reduced) {
+    // Distance-scaled duration: short hops are quick, long journeys take longer.
+    const el = document.getElementById(id);
+    const distance = el ? Math.abs(el.getBoundingClientRect().top) : 0;
+    const duration = Math.min(1.1, Math.max(0.4, distance / 2500));
+    lenisInstance.scrollTo(`#${id}`, { offset: -72, duration });
   } else {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById(id)?.scrollIntoView({ behavior: reduced ? "auto" : "smooth" });
   }
 }

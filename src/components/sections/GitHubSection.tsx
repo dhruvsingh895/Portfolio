@@ -217,7 +217,7 @@ export function GitHubSection() {
                         unoptimized
                       />
                     ) : (
-                      <div className="relative flex h-24 w-24 items-center justify-center rounded-full glass text-4xl">
+                      <div className="relative flex h-24 w-24 items-center justify-center rounded-full glass-flat text-4xl">
                         <FaGithub />
                       </div>
                     )}

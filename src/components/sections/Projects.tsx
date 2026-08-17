@@ -91,7 +91,7 @@ export function Projects() {
                       </div>
 
                       <div className="mt-auto">
-                        <h3 className="max-w-2xl font-display text-2xl font-bold leading-snug text-foreground transition-colors group-hover:text-gradient-aurora md:text-4xl">
+                        <h3 className="max-w-2xl font-display text-2xl font-bold leading-snug tracking-[-0.02em] text-foreground transition-colors group-hover:text-gradient-aurora md:text-4xl">
                           {project.title}
                         </h3>
                         <p className="mt-3 max-w-2xl text-sm text-slate-400 md:text-base">

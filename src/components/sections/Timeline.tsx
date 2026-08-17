@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, useReducedMotion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TIMELINE } from "@/lib/data/achievements";
 import { viewportOnce } from "@/lib/animations";
@@ -10,6 +10,7 @@ import { cn } from "@/lib/utils";
 
 export function Timeline() {
   const accent = useThemedAccent();
+  const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -78,8 +79,8 @@ export function Timeline() {
                     >
                       <motion.span
                         className="absolute inset-0 rounded-full"
-                        animate={{ opacity: [0.6, 0, 0.6], scale: [1, 1.7, 1] }}
-                        transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.3 }}
+                        animate={reduce ? { opacity: 0.4 } : { opacity: [0.6, 0, 0.6], scale: [1, 1.7, 1] }}
+                        transition={reduce ? { duration: 0 } : { duration: 2.4, repeat: Infinity, delay: i * 0.3 }}
                         style={{ border: `1.5px solid ${accent(event.accent)}66` }}
                       />
                       <span className="h-2.5 w-2.5 rounded-full" style={{ background: accent(event.accent), boxShadow: `0 0 10px ${accent(event.accent)}` }} />

@@ -71,7 +71,7 @@ export function MagneticButton({
   };
 
   const cls = cn(
-    "group relative inline-flex select-none items-center justify-center gap-2 overflow-hidden rounded-full font-medium tracking-wide backdrop-blur-md transition-all duration-500 will-change-transform",
+    "group relative inline-flex select-none items-center justify-center gap-2 overflow-hidden rounded-full font-medium tracking-wide backdrop-blur-md transition-all duration-300 will-change-transform",
     sizeClasses[size],
     variantClasses[variant],
     disabled && "pointer-events-none opacity-50",
@@ -80,7 +80,7 @@ export function MagneticButton({
 
   const inner = (
     <>
-      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-500 group-hover:translate-x-full" />
       <span className="relative z-10 flex items-center gap-2">{children}</span>
     </>
   );
@@ -91,6 +91,7 @@ export function MagneticButton({
     onMouseLeave: reset,
     whileHover: { scale: 1.04 },
     whileTap: { scale: 0.96 },
+    transition: { type: "spring" as const, stiffness: 400, damping: 28 },
   };
 
   if (href) {

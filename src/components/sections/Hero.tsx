@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import { AnimatedText } from "@/components/ui/AnimatedText";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { PROFILE, HERO_STATS } from "@/lib/data/profile";
@@ -40,13 +40,14 @@ function StatPill({ value, suffix, label, decimals = 0, delay }: { value: number
 
 export function Hero() {
   const [ready, setReady] = useState(false);
+  const reduce = useReducedMotion();
   const role = useTyping(PROFILE.roles, { typeMs: 62, deleteMs: 28, holdMs: 1700 });
 
   useEffect(() => {
     const unsub = sceneBus.subscribe((s) => {
       if (s.introDone) setReady(true);
     });
-    const fallback = setTimeout(() => setReady(true), 6800);
+    const fallback = setTimeout(() => setReady(true), 3000);
     return () => {
       unsub();
       clearTimeout(fallback);
@@ -186,8 +187,8 @@ export function Hero() {
         className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2"
       >
         <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
+          animate={reduce ? { opacity: 0.6 } : { y: [0, 8, 0] }}
+          transition={reduce ? { duration: 0 } : { duration: 1.8, repeat: Infinity, ease: "easeInOut" }}
           className="text-aurora-cyan"
         >
           <FiChevronDown />

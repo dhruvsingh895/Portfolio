@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import confetti from "canvas-confetti";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ACHIEVEMENTS, STATS_MARQUEE } from "@/lib/data/achievements";
@@ -22,8 +22,9 @@ function AchievementCard({
   const ref = useRef<HTMLDivElement>(null);
   const themed = useThemedAccent();
   const accent = themed(rawAccent);
+  const reduce = useReducedMotion();
   const inView = useInView(ref, { once: true, margin: "-60px" });
-  const count = useCountUp(value, { duration: 2300, decimals, start: inView, startDelay: delay * 200 + 400 });
+  const count = useCountUp(value, { duration: reduce ? 0 : 2300, decimals, start: inView, startDelay: delay * 200 + 400 });
 
   const celebrate = () => {
     if (!ref.current) return;
@@ -68,7 +69,7 @@ function AchievementCard({
           />
         </div>
 
-        <div className="relative mt-40 font-display text-6xl font-extrabold tabular-nums md:text-7xl" style={{ color: accent, textShadow: `0 0 40px ${accent}88` }}>
+        <div className="relative mt-40 font-display text-6xl font-extrabold tabular-nums tracking-[-0.04em] md:text-7xl" style={{ color: accent, textShadow: `0 0 40px ${accent}88` }}>
           {count.toLocaleString()}
           <span className="text-4xl md:text-5xl">{suffix}</span>
         </div>
@@ -86,8 +87,8 @@ function AchievementCard({
             <motion.path
               d="M0,30 Q50,10 100,30 T200,30 T300,30 T400,30"
               fill="none" stroke={accent} strokeWidth="1.5"
-              animate={{ d: ["M0,30 Q50,10 100,30 T200,30 T300,30 T400,30", "M0,30 Q50,50 100,30 T200,30 T300,30 T400,30", "M0,30 Q50,10 100,30 T200,30 T300,30 T400,30"] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              animate={reduce ? { d: "M0,30 Q50,50 100,30 T200,30 T300,30 T400,30" } : { d: ["M0,30 Q50,10 100,30 T200,30 T300,30 T400,30", "M0,30 Q50,50 100,30 T200,30 T300,30 T400,30", "M0,30 Q50,10 100,30 T200,30 T300,30 T400,30"] }}
+              transition={reduce ? { duration: 0 } : { duration: 3, repeat: Infinity, ease: "easeInOut" }}
               style={{ filter: `drop-shadow(0 0 6px ${accent})` }}
             />
           </svg>

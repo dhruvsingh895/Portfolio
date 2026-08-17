@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { MotionConfig } from "framer-motion";
 import { CustomCursor } from "@/components/core/CustomCursor";
 import { ScrollProgress } from "@/components/core/ScrollProgress";
 import { Preloader } from "@/components/core/Preloader";
@@ -33,7 +34,7 @@ export function HomeContent() {
   }, [booted]);
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <CustomCursor />
       <ScrollProgress />
       <ExperienceSceneLoader />
@@ -59,6 +60,6 @@ export function HomeContent() {
       </div>
 
       <AIChat />
-    </>
+    </MotionConfig>
   );
 }

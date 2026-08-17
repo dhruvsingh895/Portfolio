@@ -200,6 +200,11 @@ export default function ExperienceScene() {
   const palette = useScenePalette();
   const [phase, setPhase] = useState("boot");
   const [progress, setProgress] = useState(0);
+  const [reduced, setReduced] = useState(false);
+
+  useEffect(() => {
+    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }, []);
 
   useEffect(() => {
     const unsub = sceneBus.subscribe((s) => {
@@ -236,7 +241,7 @@ export default function ExperienceScene() {
   return (
     <div className="pointer-events-none fixed inset-0 z-0">
       <Canvas
-        frameloop="always"
+        frameloop={reduced ? "demand" : "always"}
         dpr={[1, 1.5]}
         camera={{ position: [0, 0.4, 21], fov: 55, near: 0.1, far: 400 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
