@@ -98,7 +98,7 @@ export function Hero() {
             <AnimatedText text="DHRUV" className="block" delay={0.15} stagger={0.05} active={ready} />
             <AnimatedText
               text="SINGH"
-              className="block text-gradient-aurora glow-text"
+              className="block text-gradient-aurora"
               delay={0.4}
               stagger={0.05}
               active={ready}
