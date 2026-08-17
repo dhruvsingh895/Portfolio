@@ -52,7 +52,7 @@ export function SectionHeading({
         whileInView="visible"
         viewport={viewportOnce}
         custom={0.1}
-        className="font-display text-4xl font-bold leading-[1.02] tracking-tight text-foreground md:text-6xl lg:text-7xl"
+        className="font-display text-4xl font-bold leading-[1.02] tracking-[-0.025em] text-foreground md:text-6xl lg:text-7xl"
       >
         {gradientWord ? (
           <>

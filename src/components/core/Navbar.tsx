@@ -42,14 +42,24 @@ export function Navbar({ active }: { active: boolean }) {
         className={cn(
           "fixed inset-x-0 top-0 z-[60] transition-all duration-500",
           scrolled ? "py-3" : "py-5",
+          scrolled && "scroll-edge-bottom",
         )}
       >
         <nav
           className={cn(
-            "mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8",
+            "relative mx-auto flex max-w-7xl items-center justify-between px-4 md:px-8",
             scrolled && "px-4 md:px-6",
           )}
         >
+          <span
+            aria-hidden
+            className={cn(
+              "pointer-events-none absolute inset-0 rounded-full transition-all duration-500",
+              scrolled
+                ? "opacity-100 glass-strong"
+                : "opacity-0",
+            )}
+          />
           <button
             onClick={() => go("hero")}
             aria-label="Back to top"
@@ -74,7 +84,7 @@ export function Navbar({ active }: { active: boolean }) {
                 key={link.id}
                 onClick={() => go(link.id)}
                 data-cursor
-                className="group relative rounded-full px-3.5 py-1.5 text-[13px] font-medium text-slate-300 transition-all duration-300 hover:bg-white/[0.05] hover:text-aurora-cyan hover:shadow-[0_0_18px_-8px_rgba(var(--glow-w),0.5)]"
+                className="group relative rounded-full px-3.5 py-1.5 text-[13px] font-medium text-slate-300 transition-all duration-300 hover:bg-white/[0.05] hover:text-aurora-cyan hover:shadow-[0_0_18px_-8px_rgba(var(--glow-w),0.5)] active:scale-95"
               >
                 {link.label}
                 <span className="absolute inset-x-3 -bottom-0.5 h-px scale-x-0 bg-gradient-to-r from-aurora-cyan to-aurora-violet transition-transform duration-300 group-hover:scale-x-100" />
@@ -88,7 +98,7 @@ export function Navbar({ active }: { active: boolean }) {
               aria-label={theme === "mono" ? "Switch to colorful theme" : "Switch to monochrome theme"}
               title={theme === "mono" ? "Colorful theme" : "Monochrome theme"}
               data-cursor
-              className="flex h-10 w-10 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_20px_-8px_rgba(var(--glow-w),0.6)]"
+              className="flex h-10 w-10 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_20px_-8px_rgba(var(--glow-w),0.6)] active:scale-90"
             >
               {theme === "mono" ? <FiSun className="text-lg" /> : <FiMoon className="text-lg" />}
             </button>
@@ -106,7 +116,7 @@ export function Navbar({ active }: { active: boolean }) {
               onClick={() => setOpen((o) => !o)}
               aria-label="Toggle menu"
               data-cursor
-              className="relative z-20 flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full glass ring-1 ring-white/5 transition-all duration-300 hover:border-aurora-cyan/50 hover:shadow-[0_0_20px_-8px_rgba(var(--glow-w),0.6)] lg:hidden"
+              className="relative z-20 flex h-10 w-10 flex-col items-center justify-center gap-1.5 rounded-full glass ring-1 ring-white/5 transition-all duration-300 hover:border-aurora-cyan/50 hover:shadow-[0_0_20px_-8px_rgba(var(--glow-w),0.6)] active:scale-90 lg:hidden"
             >
               <span
                 className={cn(
@@ -127,26 +137,26 @@ export function Navbar({ active }: { active: boolean }) {
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-[55] flex flex-col justify-center bg-void/80 backdrop-blur-2xl lg:hidden"
-          >
-            <div className="absolute inset-0 grid-bg opacity-30" />
-            <div className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-aurora-violet/20 blur-[130px]" />
-            <div className="relative z-10 flex flex-col gap-2 px-8">
-              {NAV_LINKS.map((link, i) => (
-                <motion.button
-                  key={link.id}
-                  initial={{ opacity: 0, x: -40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ delay: 0.08 * i, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-                  onClick={() => go(link.id)}
-                  className="group flex items-center gap-4 py-3 text-left"
-                >
+<motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+              className="fixed inset-0 z-[55] flex flex-col justify-center bg-void/80 backdrop-blur-2xl lg:hidden"
+            >
+              <div className="absolute inset-0 grid-bg opacity-30" />
+              <div className="pointer-events-none absolute -top-24 right-0 h-96 w-96 rounded-full bg-aurora-violet/20 blur-[130px]" />
+              <div className="relative z-10 flex flex-col gap-2 px-8">
+                {NAV_LINKS.map((link, i) => (
+                  <motion.button
+                    key={link.id}
+                    initial={{ opacity: 0, x: -40 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ type: "spring", bounce: 0.12, duration: 0.4, delay: 0.05 * i }}
+                    onClick={() => go(link.id)}
+                    className="group flex items-center gap-4 py-3 text-left active:scale-[0.98]"
+                  >
                   <span className="font-mono text-xs text-aurora-cyan/70">
                     0{i + 1}
                   </span>

@@ -154,6 +154,23 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  font-optical-sizing: auto;
+  letter-spacing: 0;
+}
+
+/* Apple-style display type: negative tracking that grows with size,
+   tight leading on large headings, looser on body copy. */
+@layer components {
+  .display-tight {
+    font-optical-sizing: auto;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+  }
+  .display-flush {
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+    line-height: 1.02;
+  }
 }
 
 ::selection {
@@ -190,16 +207,23 @@ body {
    ───────────────────────────────────────────── */
 @layer components {
   .glass {
-    background: linear-gradient(150deg, rgba(255, 255, 255, 0.045), rgba(255, 255, 255, 0.012));
-    border: 1px solid rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    background: linear-gradient(150deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015));
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px) saturate(160%);
+    -webkit-backdrop-filter: blur(12px) saturate(160%);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.16),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.03);
   }
   .glass-strong {
-    background: linear-gradient(150deg, rgba(7, 12, 26, 0.85), rgba(2, 4, 11, 0.92));
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: linear-gradient(150deg, rgba(10, 16, 32, 0.82), rgba(3, 6, 14, 0.9));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    box-shadow:
+      0 24px 60px -24px rgba(0, 0, 0, 0.75),
+      inset 0 1px 0 rgba(255, 255, 255, 0.18),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.03);
   }
   .text-gradient {
     background: linear-gradient(100deg, #fafafa 20%, #d4d4d8 45%, #a1a1aa 65%, #71717a 85%);
@@ -275,6 +299,33 @@ body {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Apple §14 — frostier, near-solid surfaces when translucency is reduced */
+@media (prefers-reduced-transparency: reduce) {
+  .glass {
+    background: rgba(8, 8, 10, 0.92);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+  .glass-strong {
+    background: rgba(4, 6, 12, 0.97);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+}
+
+/* Apple §14 — defined border when contrast is requested */
+@media (prefers-contrast: more) {
+  .glass, .glass-strong {
+    border-color: rgba(255, 255, 255, 0.35);
+  }
+}
+
+/* Apple §12 — soft scroll edge instead of hard dividers */
+.scroll-edge-bottom {
+  -webkit-mask-image: linear-gradient(180deg, #000 82%, transparent);
+  mask-image: linear-gradient(180deg, #000 82%, transparent);
 }
 
 /* ─────────────────────────────────────────────

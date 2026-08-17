@@ -93,7 +93,7 @@ export function Hero() {
             <span className="mt-1 block md:mt-0 md:inline"> I&apos;m</span>
           </motion.p>
 
-          <h1 className="mt-4 font-display text-[17vw] font-extrabold leading-[0.92] tracking-tight md:text-[11vw] lg:text-[9.5rem]">
+          <h1 className="mt-4 font-display text-[17vw] font-extrabold leading-[0.92] tracking-[-0.045em] md:text-[11vw] lg:text-[9.5rem]">
             <AnimatedText text="DHRUV" className="block" delay={0.15} stagger={0.05} active={ready} />
             <AnimatedText
               text="SINGH"
@@ -171,15 +171,9 @@ export function Hero() {
         transition={{ duration: 1.2, delay: 1.9 }}
         className="pointer-events-none absolute bottom-24 right-6 hidden flex-col items-end gap-3 xl:flex"
       >
-        <a href={PROFILE.socials.github} target="_blank" rel="noreferrer" aria-label="GitHub" data-cursor className="flex h-11 w-11 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_24px_-6px_rgba(var(--glow-w),0.7)]">
-          <FiGithub />
-        </a>
-        <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" data-cursor className="flex h-11 w-11 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_24px_-6px_rgba(var(--glow-w),0.7)]">
-          <FiLinkedin />
-        </a>
-        <a href={`mailto:${PROFILE.email}`} aria-label="Email" data-cursor className="flex h-11 w-11 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_24px_-6px_rgba(var(--glow-w),0.7)]">
-          <FiMail />
-        </a>
+        <a href={PROFILE.socials.github} target="_blank" rel="noreferrer" aria-label="GitHub" data-cursor className="flex h-11 w-11 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_24px_-6px_rgba(var(--glow-w),0.7)] active:scale-90"><FiGithub /></a>
+        <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn" data-cursor className="flex h-11 w-11 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_24px_-6px_rgba(var(--glow-w),0.7)] active:scale-90"><FiLinkedin /></a>
+        <a href={`mailto:${PROFILE.email}`} aria-label="Email" data-cursor className="flex h-11 w-11 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_24px_-6px_rgba(var(--glow-w),0.7)] active:scale-90"><FiMail /></a>
       </motion.div>
 
       <motion.button
