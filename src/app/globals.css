@@ -84,56 +84,6 @@
   50%, 100% { opacity: 0; }
 }
 
-/* ── Creative system: rotating conic borders, aurora sheen ── */
-@property --angle {
-  syntax: "<angle>";
-  initial-value: 0deg;
-  inherits: false;
-}
-
-@keyframes border-rotate {
-  to { --angle: 360deg; }
-}
-
-.conic-border {
-  position: relative;
-  isolation: isolate;
-}
-.conic-border::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: conic-gradient(
-    from var(--angle),
-    transparent 0%,
-    rgba(var(--glow-w), 0.6) 8%,
-    rgba(var(--glow-g), 0.4) 16%,
-    transparent 30%,
-    transparent 55%,
-    rgba(var(--glow-g), 0.45) 68%,
-    rgba(var(--glow-w), 0.6) 80%,
-    transparent 100%
-  );
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-  z-index: 1;
-  animation: border-rotate 5s linear infinite;
-}
-
-@keyframes aura-pulse {
-  0%, 100% { opacity: 0.35; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.08); }
-}
-
-@keyframes sheen-slide {
-  0% { transform: translateX(-150%) skewX(-18deg); }
-  100% { transform: translateX(250%) skewX(-18deg); }
-}
-
 /* ── Hero starfield ─────────────────────────── */
 @keyframes star-twinkle {
   0%, 100% { opacity: 0.1; transform: scale(0.7); }
@@ -427,19 +377,6 @@ body {
 }
 .theme-colorful .edge-glow::before {
   background: linear-gradient(140deg, rgba(34, 211, 238, 0.5), rgba(139, 92, 246, 0.35) 40%, transparent 70%);
-}
-.theme-colorful .conic-border::before {
-  background: conic-gradient(
-    from var(--angle),
-    transparent 0%,
-    rgba(34, 211, 238, 0.65) 8%,
-    rgba(139, 92, 246, 0.5) 16%,
-    transparent 30%,
-    transparent 55%,
-    rgba(237, 111, 169, 0.55) 68%,
-    rgba(34, 211, 238, 0.65) 80%,
-    transparent 100%
-  );
 }
 .theme-colorful .shimmer-line {
   background: linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.7), rgba(34, 211, 238, 0.7), transparent);

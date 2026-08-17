@@ -136,7 +136,7 @@ export function About() {
         {/* Education spotlight */}
         <div className="mt-32">
           <TiltCard maxTilt={6} className="group">
-            <div className="relative overflow-hidden rounded-3xl glass-strong conic-border p-8 md:p-12">
+            <div className="relative overflow-hidden rounded-3xl glass-strong p-8 md:p-12">
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 grid-bg opacity-30"

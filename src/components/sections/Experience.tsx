@@ -27,7 +27,7 @@ export function Experience() {
         <div className="grid gap-6 lg:grid-cols-2">
           {EXPERIENCE.map((exp, i) => (
             <TiltCard key={exp.company} className={i === 0 ? "lg:col-span-2" : ""}>
-              <div className="group relative overflow-hidden rounded-3xl glass-strong conic-border p-8 md:p-10">
+              <div className="group relative overflow-hidden rounded-3xl glass-strong p-8 md:p-10">
                 <div aria-hidden className="absolute -right-16 -top-16 h-48 w-48 rounded-full opacity-30 blur-[80px] transition-colors duration-700"
                   style={{ background: accent(exp.accent) }} />
                 <div className="relative flex flex-wrap items-start justify-between gap-4">

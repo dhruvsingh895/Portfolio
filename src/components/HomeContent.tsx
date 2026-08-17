@@ -6,8 +6,6 @@ import { ScrollProgress } from "@/components/core/ScrollProgress";
 import { Preloader } from "@/components/core/Preloader";
 import { Navbar } from "@/components/core/Navbar";
 import { Footer } from "@/components/core/Footer";
-import { CursorAura } from "@/components/ui/CursorAura";
-import { TechTicker } from "@/components/ui/TechTicker";
 import ExperienceSceneLoader from "@/components/three/ExperienceSceneLoader";
 import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
@@ -37,7 +35,6 @@ export function HomeContent() {
   return (
     <>
       <CustomCursor />
-      <CursorAura />
       <ScrollProgress />
       <ExperienceSceneLoader />
       <Preloader onComplete={() => setBooted(true)} />
@@ -46,7 +43,6 @@ export function HomeContent() {
 
       <main className="relative z-10">
         <Hero />
-        <TechTicker />
         <About />
         <Experience />
         <Projects />

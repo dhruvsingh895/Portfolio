@@ -47,7 +47,7 @@ export function Projects() {
                   data-cursor
                   className="group relative block h-full w-full overflow-hidden rounded-3xl text-left"
                 >
-                  <div className="relative h-full min-h-[320px] overflow-hidden rounded-3xl conic-border border border-white/10 bg-surface p-7 transition-colors duration-500 group-hover:border-white/20 md:min-h-[380px] md:p-10">
+                  <div className="relative h-full min-h-[320px] overflow-hidden rounded-3xl border border-white/10 bg-surface p-7 transition-colors duration-500 group-hover:border-white/20 md:min-h-[380px] md:p-10">
                     {/* Animated scene background */}
                     <div aria-hidden className="absolute inset-0 opacity-80">
                       <div className="absolute inset-0 grid-bg opacity-40" />

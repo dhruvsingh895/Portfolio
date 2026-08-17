@@ -131,7 +131,7 @@ function SkillModal({ skill, onClose }: { skill: Skill; onClose: () => void }) {
         animate={{ y: 0, scale: 1 }}
         exit={{ y: 40, scale: 0.95 }}
         transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-        className="relative z-10 w-full max-w-md overflow-hidden rounded-3xl glass-strong conic-border p-8"
+        className="relative z-10 w-full max-w-md overflow-hidden rounded-3xl glass-strong p-8"
       >
         <button onClick={onClose} aria-label="Close" data-cursor
           className="absolute right-5 top-5 flex h-9 w-9 items-center justify-center rounded-full glass ring-1 ring-white/5 text-slate-300 transition-all duration-300 hover:rotate-90 hover:border-aurora-cyan/60 hover:text-aurora-cyan hover:shadow-[0_0_18px_-8px_rgba(var(--glow-w),0.6)]">

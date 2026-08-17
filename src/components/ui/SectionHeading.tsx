@@ -27,29 +27,13 @@ export function SectionHeading({
 
   return (
     <div className={cn("relative mb-14 md:mb-20", centered && "text-center", className)}>
-      {/* ghost numeral */}
-      <motion.span
-        aria-hidden
-        variants={sectionHeadingVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={viewportOnce}
-        className={cn(
-          "pointer-events-none absolute -top-10 select-none font-display text-[7rem] font-extrabold leading-none text-transparent opacity-[0.12] md:-top-16 md:text-[12rem]",
-          centered ? "left-1/2 -translate-x-1/2" : "right-0",
-        )}
-        style={{ WebkitTextStroke: "1px rgba(var(--glow-w),0.5)" }}
-      >
-        {index}
-      </motion.span>
-
       <motion.div
         variants={sectionHeadingVariants}
         initial="hidden"
         whileInView="visible"
         viewport={viewportOnce}
         className={cn(
-          "relative mb-4 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.35em] text-aurora-cyan/70 md:text-xs",
+          "mb-4 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.35em] text-aurora-cyan/70 md:text-xs",
           centered && "justify-center",
         )}
       >
@@ -79,18 +63,6 @@ export function SectionHeading({
           title
         )}
       </motion.h2>
-
-      <motion.span
-        aria-hidden
-        initial={{ scaleX: 0, opacity: 0 }}
-        whileInView={{ scaleX: 1, opacity: 1 }}
-        viewport={viewportOnce}
-        transition={{ type: "spring", bounce: 0, duration: 0.8, delay: 0.25 }}
-        className={cn(
-          "mt-4 block h-px w-36 bg-gradient-to-r from-aurora-cyan via-aurora-violet to-transparent",
-          centered && "mx-auto bg-gradient-to-r from-transparent via-aurora-violet to-transparent",
-        )}
-      />
 
       {subtitle && (
         <motion.p
