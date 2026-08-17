@@ -103,7 +103,7 @@ export function Footer() {
         <div className="user-select-none relative mt-14 overflow-hidden" aria-hidden>
           {/* aurora glow behind the name */}
           <div className="pointer-events-none absolute inset-x-0 -top-6 mx-auto h-40 w-[80%] rounded-full bg-gradient-to-r from-aurora-cyan/12 via-aurora-violet/20 to-aurora-magenta/12 blur-[90px]" />
-          <p className="text-hue whitespace-nowrap text-center font-display text-[18vw] font-extrabold leading-none tracking-tight drop-shadow-[0_0_35px_rgba(var(--glow-g),0.45)] md:text-[13vw]">
+          <p className="whitespace-nowrap text-center font-display text-[18vw] font-extrabold leading-none tracking-tight md:text-[13vw] font-outline opacity-40">
             DHRUV SINGH
           </p>
           <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
