@@ -200,7 +200,6 @@ export default function ExperienceScene() {
   const palette = useScenePalette();
   const [phase, setPhase] = useState("boot");
   const [progress, setProgress] = useState(0);
-  const [frameloop, setFrameloop] = useState<"always" | "never">("always");
 
   useEffect(() => {
     const unsub = sceneBus.subscribe((s) => {
@@ -232,47 +231,12 @@ export default function ExperienceScene() {
     };
   }, []);
 
-  // Pause rendering entirely when the hero is off-screen.
-  useEffect(() => {
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    let introDone = false;
-    let heroVisible = window.scrollY < window.innerHeight * 0.75;
-
-    const apply = () => {
-      setFrameloop(introDone && !reduced && !heroVisible ? "never" : "always");
-    };
-
-    const onScroll = () => {
-      heroVisible = window.scrollY < window.innerHeight * 0.75;
-      apply();
-    };
-    const onVis = () => apply();
-
-    const unsub = sceneBus.subscribe((s) => {
-      if (s.introDone && !introDone) {
-        introDone = true;
-        apply();
-      }
-    });
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    document.addEventListener("visibilitychange", onVis);
-
-    apply();
-
-    return () => {
-      unsub();
-      window.removeEventListener("scroll", onScroll);
-      document.removeEventListener("visibilitychange", onVis);
-    };
-  }, []);
-
   const tunnelActive = phase === "boot" && progress < 0.5;
 
   return (
     <div className="pointer-events-none fixed inset-0 z-0">
       <Canvas
-        frameloop={frameloop}
+        frameloop="always"
         dpr={[1, 1.5]}
         camera={{ position: [0, 0.4, 21], fov: 55, near: 0.1, far: 400 }}
         gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}

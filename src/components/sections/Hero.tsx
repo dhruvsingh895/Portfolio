@@ -53,6 +53,15 @@ export function Hero() {
     };
   }, []);
 
+  const downloadResume = () => {
+    const a = document.createElement("a");
+    a.href = PROFILE.resumeUrl;
+    a.download = "Dhruv_Singh_Resume.pdf";
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+  };
+
   return (
     <section id="hero" className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden">
       <Starfield active={ready} />
@@ -132,20 +141,9 @@ export function Hero() {
           <MagneticButton variant="primary" size="lg" onClick={() => scrollToId("about")}>
             Explore Journey
           </MagneticButton>
-          {PROFILE.resumeUrl ? (
-            <MagneticButton
-              variant="glass"
-              size="lg"
-              href={PROFILE.resumeUrl}
-              download="Dhruv_Singh_Resume.pdf"
-            >
-              <FaDownload className="opacity-80" /> Download Resume
-            </MagneticButton>
-          ) : (
-            <MagneticButton variant="glass" size="lg" onClick={() => scrollToId("skills")}>
-              <FaDownload className="opacity-80" /> Download Resume
-            </MagneticButton>
-          )}
+          <MagneticButton variant="glass" size="lg" onClick={downloadResume}>
+            <FaDownload className="opacity-80" /> Download Resume
+          </MagneticButton>
           <MagneticButton variant="outline" size="lg" onClick={() => scrollToId("projects")}>
             View Projects
           </MagneticButton>

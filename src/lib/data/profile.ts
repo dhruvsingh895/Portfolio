@@ -19,7 +19,7 @@ export const PROFILE = {
     "Computer Vision Engineer",
     "Full Stack Developer",
   ],
-  resumeUrl: process.env.NEXT_PUBLIC_RESUME_URL ?? "",
+  resumeUrl: process.env.NEXT_PUBLIC_RESUME_URL || "/resume/Dhruv_Singh_Resume.pdf",
   github: process.env.NEXT_PUBLIC_GITHUB_USERNAME ?? "dhruvsingh895",
   socials: {
     github: "https://github.com/dhruvsingh895",

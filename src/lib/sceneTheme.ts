@@ -42,7 +42,7 @@ export const SCENE_MONO: ScenePalette = {
 export const SCENE_COLORFUL: ScenePalette = {
   sun: "#ffd28a",
   corona: "#ff9d3b",
-  corona2: "#7c3aed",
+  corona2: "#ffd700",
   flare: "#ffd28a",
   atmosphere: "#1e90ff",
   atmosphere2: "#8b5cf6",
