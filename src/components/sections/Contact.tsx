@@ -10,9 +10,9 @@ import { viewportOnce } from "@/lib/animations";
 import { useThemedAccent } from "@/lib/theme";
 import { FiSend, FiMail, FiGithub, FiLinkedin } from "react-icons/fi";
 
-const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ?? "";
-const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ?? "";
-const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY ?? "";
+const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || "service_p4gji6s";
+const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || "template_b4y761l";
+const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || "LHD8aDiCG1-JKyTNJ";
 
 type Status = "idle" | "flying" | "sent" | "error";
 
