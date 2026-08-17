@@ -82,7 +82,7 @@ export function Experience() {
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-wider">
               {[
-                "DSA · 700+",
+                "DSA · 750+",
                 "Full Stack",
                 "Deep Learning",
                 "Computer Vision",

@@ -9,13 +9,13 @@ export const AI_KNOWLEDGE: KnowledgeEntry[] = [
     id: "intro",
     keywords: ["who", "about", "dhruv", "tell", "introduce", "yourself", "profile"],
     answer:
-      "Dhruv Singh is an AI/ML engineer from Kanpur, India — an AI/ML graduate who builds production-ready AI systems and scalable full-stack applications. He holds a B.Tech in AI & ML from AKTU with a CGPA of 8 and trained at Infosys Springboard. Ask me about his projects, skills or experience!",
+      "Dhruv Singh is an AI/ML engineer from Kanpur, India — an AI/ML graduate who builds production-ready AI systems and scalable full-stack applications. He holds a B.Tech in AI & ML from AKTU with a CGPA of 8.07 and trained at Infosys Springboard. Ask me about his projects, skills or experience!",
   },
   {
     id: "resume",
     keywords: ["resume", "cv", "download", "hiring", "hire"],
     answer:
-      "You can download Dhruv's resume using the 'Download Resume' button in the hero section. Short version: B.Tech AI & ML (CGPA 8), AI Intern at Infosys Springboard (Dec 2025 – Apr 2026), and 3 flagship projects spanning computer vision, full-stack and generative AI systems.",
+      "You can download Dhruv's resume using the 'Download Resume' button in the hero section. Short version: B.Tech AI & ML (CGPA 8.07), AI Intern at Infosys Springboard (Dec 2025 – Apr 2026), and 3 flagship projects spanning computer vision, full-stack and generative AI systems.",
   },
   {
     id: "projects",
@@ -27,7 +27,7 @@ export const AI_KNOWLEDGE: KnowledgeEntry[] = [
     id: "experience",
     keywords: ["experience", "internship", "infosys", "job", "career"],
     answer:
-      "Dhruv was an Artificial Intelligence Intern at Infosys Springboard (Dec 2025 – Apr 2026), covering Machine Learning, Deep Learning, NLP, Generative AI, Prompt Engineering and Data Analytics — including EDA on road accident data. Underpinning it all: a B.Tech in AI & ML, 700+ LeetCode problems and production projects.",
+      "Dhruv was an Artificial Intelligence Intern at Infosys Springboard (Dec 2025 – Apr 2026), covering Machine Learning, Deep Learning, NLP, Generative AI, Prompt Engineering and Data Analytics — including EDA on road accident data. Underpinning it all: a B.Tech in AI & ML, 750+ LeetCode problems and production projects.",
   },
   {
     id: "skills",
@@ -39,7 +39,7 @@ export const AI_KNOWLEDGE: KnowledgeEntry[] = [
     id: "achievements",
     keywords: ["leetcode", "achievement", "hackerrank", "geeks", "gfg", "score", "rating"],
     answer:
-      "Dhruv has solved 700+ problems on LeetCode, 100+ on GeeksforGeeks, and holds a 5-star rating on HackerRank. Academic: 8 CGPA. Production: a ~5,000-employee allocation system running at 342ms p95 latency with 52 RBAC combinations.",
+      "Dhruv has solved 750+ problems on LeetCode, 150+ on GeeksforGeeks, and holds a 5-star rating on HackerRank. Academic: 8.07 CGPA. Production: a ~5,000-employee allocation system running at 342ms p95 latency with 52 RBAC combinations.",
   },
   {
     id: "contact",

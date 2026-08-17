@@ -10,7 +10,7 @@ export interface Achievement {
 
 export const ACHIEVEMENTS: Achievement[] = [
   {
-    value: 700,
+    value: 750,
     suffix: "+",
     label: "Problems Solved",
     platform: "LeetCode",
@@ -18,9 +18,9 @@ export const ACHIEVEMENTS: Achievement[] = [
     note: "DSA mastery across arrays, graphs, DP and system-level thinking.",
   },
   {
-    value: 100,
+    value: 150,
     suffix: "+",
-    label: "Articles & Problems",
+    label: "Problems Solved",
     platform: "GeeksforGeeks",
     accent: "#34f5c5",
     note: "Consistent problem-solving practice on one of the largest DSA platforms.",
@@ -36,10 +36,10 @@ export const ACHIEVEMENTS: Achievement[] = [
 ];
 
 export const STATS_MARQUEE = [
-  "700+ LeetCode",
-  "100+ GFG",
+  "750+ LeetCode",
+  "150+ GFG",
   "5★ HackerRank",
-  "8 CGPA",
+  "8.07 CGPA",
   "342ms Latency",
   "5,000 User Simulation",
   "YOLOv8",
@@ -80,7 +80,7 @@ export const TIMELINE: TimelineEvent[] = [
     title: "Learning to Learn",
     org: "Self-driven engineering",
     description:
-      "700+ DSA problems, OOP and DBMS foundations, and building full-stack apps that put the theory to work.",
+      "750+ DSA problems, OOP and DBMS foundations, and building full-stack apps that put the theory to work.",
     accent: "#a78bfa",
   },
   {

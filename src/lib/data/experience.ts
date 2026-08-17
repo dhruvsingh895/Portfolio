@@ -31,7 +31,7 @@ export const EXPERIENCE: ExperienceItem[] = [
 export const EDUCATION = {
   degree: "B.Tech — Artificial Intelligence & Machine Learning",
   university: "Dr. A.P.J. Abdul Kalam Technical University",
-  cgpa: "8 / 10",
+  cgpa: "8.07 / 10",
   period: "2022 — 2026",
   details: [
     "Specialized in ML, Deep Learning, CV and NLP",

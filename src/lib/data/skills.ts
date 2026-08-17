@@ -111,6 +111,16 @@ export const SKILLS: Skill[] = [
     accent: "#22d3ee",
   },
   {
+    id: "html",
+    name: "HTML",
+    icon: "html",
+    category: "Frontend",
+    level: 88,
+    blurb: "Semantic, accessible markup — the skeleton every interface hangs on.",
+    uses: ["Semantic structure", "Accessibility", "SEO", "Forms & validation"],
+    accent: "#fb923c",
+  },
+  {
     id: "tailwind",
     name: "Tailwind CSS",
     icon: "tailwind",

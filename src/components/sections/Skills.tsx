@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SKILLS, type Skill } from "@/lib/data/skills";
 import { viewportOnce } from "@/lib/animations";
-import { FaPython, FaReact, FaDocker, FaAws, FaDatabase, FaGitAlt, FaBolt, FaVideo, FaEye, FaNetworkWired, FaLeaf, FaWandMagicSparkles, FaBrain, FaXmark, FaJava, FaNodeJs, FaCode } from "react-icons/fa6";
+import { FaPython, FaReact, FaDocker, FaAws, FaDatabase, FaGitAlt, FaBolt, FaVideo, FaEye, FaNetworkWired, FaLeaf, FaWandMagicSparkles, FaBrain, FaXmark, FaJava, FaNodeJs, FaCode, FaHtml5 } from "react-icons/fa6";
 import { TbBrandNextjs } from "react-icons/tb";
 import { SiTailwindcss, SiExpress } from "react-icons/si";
 import { useThemedAccent } from "@/lib/theme";
@@ -24,6 +24,7 @@ const ICONS: Record<string, React.ComponentType<{ className?: string }>> = {
   node: FaNodeJs,
   express: SiExpress,
   tailwind: SiTailwindcss,
+  html: FaHtml5,
   docker: FaDocker,
   aws: FaAws,
   database: FaDatabase,

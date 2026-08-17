@@ -10,7 +10,7 @@ export const PROFILE = {
   headline:
     "AI Engineer building production-ready intelligence — from neural nets to shippable products.",
   summary:
-    "AI/ML engineer who builds models that ship, not just train. As an Infosys Springboard intern, I shipped a YOLOv8 vehicle detection system hitting 85% accuracy at 1000+ frames/min, and engineered a full-stack seat allocation platform serving ~5,000 employees at 342ms p95. Python, deep learning, computer vision and full-stack — I turn requirements into measurable, production-ready results.",
+    "AI/ML graduate with hands-on experience in Machine Learning, Deep Learning, Computer Vision, and full-stack development (React.js, Node.js, FastAPI). I build production-style applications in Python with REST APIs, SQL, and Docker — recent work includes a real-time computer vision pipeline at 85% detection accuracy and a role-based platform serving ~5,000 users at 342ms p95 latency. Strong foundation in Data Structures & Algorithms (750+ LeetCode problems solved) and DBMS — I turn requirements into measurable, production-ready results.",
   role: "AI / ML Engineer",
   roles: [
     "AI Engineer",
@@ -31,9 +31,9 @@ export const PROFILE = {
 };
 
 export const HERO_STATS = [
-  { value: 700, suffix: "+", label: "LeetCode Problems" },
+  { value: 750, suffix: "+", label: "LeetCode Problems" },
   { value: 5, suffix: "★", label: "HackerRank" },
-  { value: 8, suffix: "", label: "CGPA" },
+  { value: 8.07, suffix: "", label: "CGPA", decimals: 2 },
 ] as const;
 
 export const NAV_LINKS = [
