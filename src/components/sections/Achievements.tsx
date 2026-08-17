@@ -49,6 +49,7 @@ function AchievementCard({
         transition={{ delay: delay * 0.12, duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         onClick={celebrate}
         data-cursor
+        data-cursor-label="Celebrate"
         className="group relative overflow-hidden rounded-3xl glass-strong p-8 text-center transition-colors duration-500 hover:border-white/20 md:p-10"
       >
         {/* glowing ring */}

@@ -59,6 +59,7 @@ function FlipCard({ cert, index }: { cert: Certificate; index: number }) {
                 target="_blank"
                 rel="noreferrer"
                 data-cursor
+                data-cursor-label="Flip"
                 className="mt-6 inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-void transition-transform hover:scale-105"
                 style={{ background: `linear-gradient(120deg, ${accent(cert.accent)}, ${accent(cert.accent)}aa)`, boxShadow: `0 0 26px -6px ${accent(cert.accent)}` }}
               >

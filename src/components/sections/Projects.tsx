@@ -45,6 +45,7 @@ export function Projects() {
                 <button
                   onClick={() => setSelected(project.id)}
                   data-cursor
+                  data-cursor-label="Open"
                   className="group relative block h-full w-full overflow-hidden rounded-3xl text-left"
                 >
                   <div className="relative h-full min-h-[320px] overflow-hidden rounded-3xl border border-white/10 bg-surface p-7 transition-colors duration-500 group-hover:border-white/20 md:min-h-[380px] md:p-10">

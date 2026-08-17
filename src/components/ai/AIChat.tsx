@@ -85,6 +85,7 @@ export function AIChat() {
         onClick={() => setOpen((o) => !o)}
         aria-label="Chat with AI assistant"
         data-cursor
+        data-cursor-label={open ? "Close" : "Ask Aurora"}
         className="group fixed bottom-5 right-5 z-[65] flex h-14 w-14 items-center justify-center md:bottom-8 md:right-8"
       >
         <span aria-hidden className="absolute -inset-2 rounded-full bg-aurora-violet/30 blur-xl animate-pulse-glow" />
