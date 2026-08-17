@@ -23,10 +23,10 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-12">
           <div className="md:col-span-5">
             <div className="flex items-center gap-3">
-              <span className="relative flex h-12 w-12 items-center justify-center">
+              <span className="conic-border relative flex h-12 w-12 items-center justify-center rounded-full">
                 <span className="absolute inset-0 rounded-full border border-aurora-cyan/40" />
                 <span className="absolute inset-0 animate-spin-slow rounded-full border-t-2 border-aurora-cyan" />
-                <span className="font-display text-base font-bold text-gradient-aurora">
+                <span className="relative z-10 font-display text-base font-bold text-gradient-aurora">
                   {PROFILE.initials}
                 </span>
               </span>
@@ -100,10 +100,15 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="user-select-none mt-14 overflow-hidden" aria-hidden>
+        <div className="user-select-none relative mt-14 overflow-hidden" aria-hidden>
+          {/* aurora glow behind the name */}
+          <div className="pointer-events-none absolute inset-x-0 -top-6 mx-auto h-40 w-[80%] rounded-full bg-gradient-to-r from-aurora-cyan/12 via-aurora-violet/20 to-aurora-magenta/12 blur-[90px]" />
           <p className="whitespace-nowrap text-center font-display text-[18vw] font-extrabold leading-none tracking-tight md:text-[13vw] font-outline opacity-40">
             DHRUV SINGH
           </p>
+          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
+            <span className="h-1.5 w-1.5 rounded-full bg-aurora-cyan animate-orbit shadow-[0_0_10px_rgba(var(--glow-w),0.9)]" />
+          </div>
         </div>
 
         <div className="mt-8 flex flex-col items-center justify-between gap-4 border-t border-white/5 pt-8 md:flex-row">

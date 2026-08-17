@@ -80,7 +80,10 @@ export function MagneticButton({
 
   const inner = (
     <>
-      <span className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/15 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
+      <span className="pointer-events-none absolute inset-0 overflow-hidden">
+        <span className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-transparent via-white/12 to-transparent transition-transform duration-700 group-hover:animate-[sheen-slide_1.1s_ease-in-out]" />
+      </span>
+      <span className="pointer-events-none absolute inset-0 rounded-full opacity-0 transition-opacity duration-500 group-hover:opacity-100" style={{ boxShadow: "inset 0 0 0 1px rgba(var(--glow-w),0.25)" }} />
       <span className="relative z-10 flex items-center gap-2">{children}</span>
     </>
   );

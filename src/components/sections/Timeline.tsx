@@ -38,10 +38,11 @@ export function Timeline() {
               className="h-full w-full origin-top rounded-full bg-gradient-to-b from-aurora-cyan via-aurora-violet to-aurora-magenta"
               style={{ scaleY: lineScale, boxShadow: "0 0 14px rgba(var(--glow-g),0.6)" }}
             />
+            {/* travelling comet */}
             <motion.div
               aria-hidden
-              className="absolute -top-4 left-1/2 h-8 w-8 -translate-x-1/2 rounded-full blur-xl bg-aurora-cyan"
-              style={{ top: glowY }}
+              className="absolute -top-3 left-1/2 h-3 w-3 -translate-x-1/2 rounded-full bg-aurora-cyan"
+              style={{ top: glowY, boxShadow: "0 0 18px 4px rgba(var(--glow-w),0.55), 0 0 36px 10px rgba(var(--glow-w),0.2)" }}
             />
           </div>
 

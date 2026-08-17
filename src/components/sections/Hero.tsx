@@ -65,6 +65,68 @@ export function Hero() {
   return (
     <section id="hero" className="relative flex min-h-[100svh] flex-col justify-center overflow-hidden">
       <Starfield active={ready} />
+
+      {/* rotating aura ring behind the hero */}
+      <div aria-hidden className="pointer-events-none absolute left-1/2 top-1/2 -z-0 -translate-x-1/2 -translate-y-1/2">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={ready ? { opacity: 1 } : {}}
+          transition={{ duration: 2, delay: 0.8 }}
+          className="relative h-[46rem] w-[46rem] rounded-full"
+          style={{ background: "conic-gradient(from 0deg, rgba(var(--glow-w),0.07), rgba(var(--glow-g),0.05) 20%, transparent 40%, transparent 60%, rgba(var(--glow-m),0.06) 80%, rgba(var(--glow-w),0.07))", filter: "blur(64px)" }}
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={ready ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 1.6, delay: 1 }}
+          className="absolute inset-16 rounded-full border border-white/[0.04]"
+          style={{ animation: "spin 60s linear infinite", borderStyle: "dashed" }}
+        />
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={ready ? { opacity: 0.6 } : {}}
+          transition={{ duration: 1.6, delay: 1.2 }}
+          className="absolute inset-32 rounded-full bg-[radial-gradient(circle_at_50%_50%,rgba(var(--glow-w),0.05),transparent_65%)]"
+        />
+      </div>
+
+      {/* orbital mono chips */}
+      <div aria-hidden className="pointer-events-none absolute inset-0 hidden lg:block">
+        {[
+          { label: "python", cls: "right-[13%] top-[31%]", delay: 0 },
+          { label: "pytorch", cls: "right-[8%] top-[42%]", delay: 1.4 },
+          { label: "yolov8", cls: "left-[12%] top-[29%]", delay: 0.7 },
+          { label: "genai", cls: "left-[16%] top-[41%]", delay: 2.1 },
+          { label: "next.js", cls: "right-[19%] bottom-[24%]", delay: 2.8 },
+          { label: "fastapi", cls: "left-[20%] bottom-[23%]", delay: 3.4 },
+        ].map((chip) => (
+          <motion.span
+            key={chip.label}
+            initial={{ opacity: 0, y: 14 }}
+            animate={ready ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 1.4 + chip.delay }}
+            className={`absolute rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.25em] text-slate-400 backdrop-blur-sm ${chip.cls}`}
+            style={{ animation: `float-slow ${6 + chip.delay}s ease-in-out infinite` }}
+          >
+            {chip.label}
+          </motion.span>
+        ))}
+      </div>
+
+      {/* HUD corner brackets */}
+      <motion.div
+        aria-hidden
+        initial={{ opacity: 0 }}
+        animate={ready ? { opacity: 0.5 } : {}}
+        transition={{ duration: 1.4, delay: 2 }}
+        className="pointer-events-none absolute inset-6 hidden md:block"
+      >
+        <span className="absolute left-0 top-0 h-6 w-6 border-l border-t border-white/10" />
+        <span className="absolute right-0 top-0 h-6 w-6 border-r border-t border-white/10" />
+        <span className="absolute bottom-0 left-0 h-6 w-6 border-b border-l border-white/10" />
+        <span className="absolute bottom-0 right-0 h-6 w-6 border-b border-r border-white/10" />
+      </motion.div>
+
       <div className="mx-auto w-full max-w-7xl px-4 pt-28 md:px-8">
         <motion.div
           initial={{ opacity: 0 }}

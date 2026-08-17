@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 export function Navbar({ active }: { active: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState("");
   const { theme, toggle } = useTheme();
 
   useEffect(() => {
@@ -19,6 +20,23 @@ export function Navbar({ active }: { active: boolean }) {
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // scroll-spy — highlight the section currently in view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActiveId(e.target.id);
+        });
+      },
+      { rootMargin: "-40% 0px -55% 0px" },
+    );
+    NAV_LINKS.forEach((l) => {
+      const el = document.getElementById(l.id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -79,17 +97,30 @@ export function Navbar({ active }: { active: boolean }) {
           </button>
 
           <div className="hidden items-center gap-1 rounded-full glass px-2 py-1.5 lg:flex">
-            {NAV_LINKS.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => go(link.id)}
-                data-cursor
-                className="group relative rounded-full px-3.5 py-1.5 text-[13px] font-medium text-slate-300 transition-all duration-300 hover:bg-white/[0.05] hover:text-aurora-cyan hover:shadow-[0_0_18px_-8px_rgba(var(--glow-w),0.5)] active:scale-95"
-              >
-                {link.label}
-                <span className="absolute inset-x-3 -bottom-0.5 h-px scale-x-0 bg-gradient-to-r from-aurora-cyan to-aurora-violet transition-transform duration-300 group-hover:scale-x-100" />
-              </button>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = activeId === link.id;
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => go(link.id)}
+                  data-cursor
+                  className={cn(
+                    "group relative rounded-full px-3.5 py-1.5 text-[13px] font-medium transition-all duration-300 active:scale-95",
+                    isActive ? "text-aurora-cyan" : "text-slate-300 hover:bg-white/[0.05] hover:text-aurora-cyan hover:shadow-[0_0_18px_-8px_rgba(var(--glow-w),0.5)]",
+                  )}
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="nav-active-pill"
+                      className="absolute inset-0 rounded-full bg-white/[0.07] ring-1 ring-aurora-cyan/30 shadow-[0_0_18px_-6px_rgba(var(--glow-w),0.5)]"
+                      transition={{ type: "spring", bounce: 0.18, duration: 0.5 }}
+                    />
+                  )}
+                  <span className="relative z-10">{link.label}</span>
+                  <span className="absolute inset-x-3 -bottom-0.5 h-px scale-x-0 bg-gradient-to-r from-aurora-cyan to-aurora-violet transition-transform duration-300 group-hover:scale-x-100" />
+                </button>
+              );
+            })}
           </div>
 
           <div className="flex items-center gap-3">
