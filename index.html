@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#08090b" />
+    <script>
+      try {
+        document.documentElement.dataset.theme =
+          localStorage.getItem('dhruv-theme') === 'orange' ? 'orange' : 'silver';
+      } catch {
+        document.documentElement.dataset.theme = 'silver';
+      }
+    </script>
+    <link rel="preload" href="/sculpture.webp" as="image" fetchpriority="high" />
+    <link
+      rel="preload"
+      href="/node_modules/@fontsource-variable/space-grotesk/files/space-grotesk-latin-wght-normal.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <meta
+      name="description"
+      content="Dhruv Singh — AI/ML Engineer & Full-Stack Developer in Kanpur, India. Explore intelligent systems, real-time computer vision, and thoughtfully engineered web platforms."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Dhruv Singh — Code. Intelligence. Impact." />
+    <meta
+      property="og:description"
+      content="AI/ML Engineer & Full-Stack Developer. Turning complex problems into things that work beautifully."
+    />
+    <meta property="og:image" content="/og-cover.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Dhruv Singh — Code. Intelligence. Impact." />
+    <meta
+      name="twitter:description"
+      content="AI/ML Engineer & Full-Stack Developer. Selected work, ideas, and the person behind the code."
+    />
+    <meta name="twitter:image" content="/og-cover.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Dhruv Singh — AI/ML Engineer & Developer</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Dhruv Singh",
+        "jobTitle": "AI/ML Engineer & Full-Stack Developer",
+        "email": "dhruvsingh050908@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kanpur",
+          "addressRegion": "Uttar Pradesh",
+          "addressCountry": "IN"
+        },
+        "sameAs": [
+          "https://github.com/dhruvsingh895",
+          "https://www.linkedin.com/in/dhruv-singh-06857831a",
+          "https://leetcode.com/u/dhruvsingh895/",
+          "https://www.chess.com/member/anonymous_895x"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript
+      ><div
+        style="
+          padding: 48px;
+          background: #08090b;
+          color: #f1f0f5;
+          font: 20px system-ui;
+          min-height: 100vh;
+        "
+      >
+        <h1>Dhruv Singh</h1>
+        <p>AI/ML Engineer & Full-Stack Developer · Kanpur, India</p>
+        <p>Building intelligent systems and scalable web platforms.</p>
+        <p>
+          <a style="color: #c3c9d2" href="mailto:dhruvsingh050908@gmail.com">Email Dhruv</a> ·
+          <a style="color: #c3c9d2" href="https://github.com/dhruvsingh895">GitHub</a> ·
+          <a style="color: #c3c9d2" href="/Dhruv_Resume.pdf">Download resume</a>
+        </p>
+        <p>Enable JavaScript to explore the interactive portfolio.</p>
+      </div></noscript
+    >
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

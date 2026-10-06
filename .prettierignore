@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.cache/
+artifacts/
+package-lock.json
+public/*.pdf
+public/*.png
