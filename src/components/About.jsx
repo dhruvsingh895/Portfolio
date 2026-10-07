@@ -1,4 +1,4 @@
-import { ArrowUpRight, Braces } from 'lucide-react';
+import { ArrowUpRight, Star } from 'lucide-react';
 import { profile } from '../data';
 import { SectionLabel, ExternalLink } from './UI';
 import Monogram from './Monogram';
@@ -61,16 +61,14 @@ export default function About() {
         </ExternalLink>
         <div className="stat-cell">
           <div className="stat-top">
-            <span className="mono">BUILT FOR REAL SCALE</span>
-            <Braces size={18} />
+            <span className="mono">PROVEN PROBLEM-SOLVING</span>
+            <Star size={18} aria-hidden="true" />
           </div>
-          <strong>
-            <span data-count="5000" data-format="compact">
-              5,000
-            </span>
-            <span className="stat-symbol">↗</span>
+          <strong aria-label="5 stars">
+            <span data-count="5">5</span>
+            <span className="stat-symbol" aria-hidden="true">★</span>
           </strong>
-          <span>Employee records, one platform</span>
+          <span>HackerRank rating</span>
         </div>
         <div className="stat-cell">
           <div className="stat-top">
